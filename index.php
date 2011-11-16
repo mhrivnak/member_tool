@@ -15,19 +15,32 @@
     $gContactName  = "Member Tool Maintainers";
     $gContactEmail = "member-tool@trilug.org";
 
+    # Behavior of the debug function
+    # - 0 = no debugging, 1 = inline comment, 2 = visable, 3 = raw
+    # - set to 0 when deployed
+    $gDebug        = 2;
+
     # let's get started; no editing should be necessary below this line
 
     include("php4-1-1_varfix.php");
+    include("debug.php");
 
     # open a connection to the database server
-    $db_conn = mysql_connect("$gDbHost","$gUsername","$gPassword") or
-      die("Cound not open database : ".mysql_error());
-    $the_db = mysql_select_db("$gDatabase",$db_conn) or
-      die("Mysql Error : ".mysql_error());
+    $db_conn = mysql_connect("$gDbHost","$gUsername","$gPassword");
+    if(!$db_conn) {
+      debug("Cound not open database : ".mysql_error());
+      exit;
+    }
+    $the_db = mysql_select_db("$gDatabase",$db_conn);
+    if(!$the_db) {
+      debug("Mysql Error : ".mysql_error());
+      exit;
+    }
+
     # display the header
     include "header.inc";
 
-    echo "<!-- the command is : $cmd  -->\n";
+    debug("Command is : $cmd");
     # process the command
     if (! $cmd) {
 
