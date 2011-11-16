@@ -1,28 +1,12 @@
 <?php
 
-    # index.php - a trilug membership list
+    # index.php - TriLUG membership tool
 
     # Copyright (c) 2000 Eric Lease Morgan  <eric_morgan@infomotions.com>
     # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 
-    # define some constants
-    $gDbHost       = "localhost";
-    $gDatabase     = "membership";
-    $gUsername     = "membership-www";
-    $gPassword     = "foobarbaz";
-    $gHome         = "http://www.trilug.org/";
-    $gDate         = "2011/11/15";
-    $gContactName  = "Member Tool Maintainers";
-    $gContactEmail = "member-tool@trilug.org";
-
-    # Behavior of the debug function
-    # - 0 = no debugging, 1 = inline comment, 2 = visable, 3 = raw
-    # - set to 0 when deployed
-    $gDebug        = 2;
-
-    # let's get started; no editing should be necessary below this line
-
     include("php4-1-1_varfix.php");
+    include("config.php");
     include("debug.php");
 
     # open a connection to the database server
