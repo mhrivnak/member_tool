@@ -7,9 +7,9 @@
 
     # Database configuration
     $gDbHost       = "localhost";
-    $gDatabase     = "membership";
+    $gDatabase     = "membership_dev";
     $gUsername     = "membership-www";
-    $gPassword     = "foo";
+    $gPassword     = "foobar";
 
     # Contact information
     $gHome         = "http://www.trilug.org/";
