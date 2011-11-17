@@ -12,12 +12,12 @@
     # open a connection to the database server
     $db_conn = mysql_connect("$gDbHost","$gUsername","$gPassword");
     if(!$db_conn) {
-      debug("Cound not open database : ".mysql_error());
+      debug("Could not open database : ".mysql_error());
       exit;
     }
     $the_db = mysql_select_db("$gDatabase",$db_conn);
     if(!$the_db) {
-      debug("Mysql Error : ".mysql_error());
+      debug("MySQL error : ".mysql_error());
       exit;
     }
 

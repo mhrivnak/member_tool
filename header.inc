@@ -29,7 +29,6 @@
 <a href="./?cmd=displayall">List all members</a><br /><br />
 <a href="./?cmd=search">Search the list</a><br /><br />
 <a href="./?cmd=manual">Read the manual</a><br /><br /><br /><br />
-<a href="./?cmd=emailall">Email membership to All</a><br /><br />
 </nobr>
 
 </td>
