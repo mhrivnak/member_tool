@@ -11,7 +11,7 @@ function load_config( $config_file ) {
 
     $configs = Spyc::YAMLLoad($config_file);
 
-    $environment = getenv('ENV');
+    $environment = $_SERVER['ENV'];
     is_string($environment) || $environment = "";
 
     if( !array_key_exists($environment, $configs) ) {
