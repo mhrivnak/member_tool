@@ -1,0 +1,25 @@
+# config.yaml
+
+# Option syntax:
+#   debug: 0 = no debugging, 1 = inline comment, 2 = visible, 3 = raw
+       
+production:
+  db_host: dbserver
+  db_name: membertool
+  db_user: membertool
+  db_password: s3kr1tz
+  home_url: 'http://example.com'
+  contact_name: 'Member Tool Maintainers'
+  contact_email: 'member-tool@example.com'
+  debug: 0
+
+development:
+  db_host: localhost
+  db_name: membertool_dev
+  db_user: membertool
+  db_password: foo
+  home_url: 'http://example.com'
+  contact_name: 'Member Tool Maintainers'
+  contact_email: 'member-tool@example.com'
+  debug: 2
+

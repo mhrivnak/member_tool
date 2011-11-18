@@ -1,25 +1,32 @@
 <?php
 
-    # config.php -- global configuration and settings
+# config.php -- global configuration and settings
 
-    # Eric Lease Morgan (eric_morgan@infomotions.com)
-    # http://www.infomotions.com
+# Copyright (c) 2011 Jeff Schornick <code@schornick.org>
+# License: MIT License, http://www.opensource.org/licenses/mit-license.php
 
-    # Database configuration
-    $gDbHost       = "localhost";
-    $gDatabase     = "membership_dev";
-    $gUsername     = "membership-www";
-    $gPassword     = "foobar";
+include('lib/spyc.php');
 
-    # Contact information
-    $gHome         = "http://www.trilug.org/";
-    $gDate         = "2011/11/15";
-    $gContactName  = "TriLUG Member Tool Maintainers";
-    $gContactEmail = "member-tool@trilug.org";
+function load_config( $config_file ) {
 
-    # Behavior of the debug function
-    # - 0 = no debugging, 1 = inline comment, 2 = visable, 3 = raw
-    # - set to 0 when deployed
-    $gDebug        = 2;
+    $configs = Spyc::YAMLLoad($config_file);
 
+    $environment = getenv('ENV');
+    is_string($environment) || $environment = "";
+
+    if( !array_key_exists($environment, $configs) ) {
+      echo "Configuration does not exist for environment.\n";
+      echo "  \$ENV: '" . $environment . "'\n";
+      echo "  Configuration file: '" . $config_file . "'\n";
+      exit;
+    }
+
+    foreach ($configs[$environment] as $key => $value) {
+      $conf[$key] = $value;
+    }
+
+    return $conf;
+
+}
+  
 ?>

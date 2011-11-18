@@ -23,7 +23,7 @@
         $sql = "DELETE
                 FROM member_list
                 WHERE member_id = $id";
-        mysql_db_query ($gDatabase, $sql);
+        mysql_query ($sql);
 
         # done
         include "delete.inc";

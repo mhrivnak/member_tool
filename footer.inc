@@ -3,9 +3,8 @@
 </p>
 
 <p>
-Contact: <?php echo $gContactName ?> (<a href="<?php echo $gContactEmail ?>"><?php echo $gContactEmail ?></a>)<br>
-URL: <a href="<?php echo $gHome ?>"><?php echo $gHome ?></a><br>
-Date: <?php echo $gDate ?>
+Contact: <?php echo $conf['contact_name'] ?> (<a href="<?php echo $conf['contact_email'] ?>"><?php echo $conf['contact_email'] ?></a>)<br>
+URL: <a href="<?php echo $conf['home_url'] ?>"><?php echo $conf['home_url'] ?></a><br>
 </p>
 
 </td>
