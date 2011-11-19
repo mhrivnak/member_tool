@@ -7,12 +7,14 @@
 
 include('lib/spyc.php');
 
-function load_config( $config_file ) {
+function load_config( $config_file, $environment = "" ) {
 
     $configs = Spyc::YAMLLoad($config_file);
 
-    $environment = $_SERVER['ENV'];
-    is_string($environment) || $environment = "";
+    if(!$environment) {
+      $environment = $_SERVER['ENV'];
+      is_string($environment) || $environment = "";
+    }
 
     if( !array_key_exists($environment, $configs) ) {
       echo "Configuration does not exist for environment.\n";

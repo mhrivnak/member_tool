@@ -11,6 +11,7 @@
     require("database.php");
 
     $conf = load_config('config.yaml');
+    $debug = $conf['debug'];
     $db = db_connect($conf);
 
     # display the header
