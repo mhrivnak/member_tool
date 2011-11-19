@@ -8,20 +8,10 @@
     require("php4-1-1_varfix.php");
     require("config.php");
     require("debug.php");
+    require("database.php");
 
     $conf = load_config('config.yaml');
-
-    # open a connection to the database server
-    $db_conn = mysql_connect($conf['db_host'],$conf['db_user'],$conf['db_pass']);
-    if(!$db_conn) {
-      debug("Could not open database : ".mysql_error());
-      exit;
-    }
-    $the_db = mysql_select_db($conf['db_name'],$db_conn);
-    if(!$the_db) {
-      debug("MySQL error : ".mysql_error());
-      exit;
-    }
+    $db = db_connect($conf);
 
     # display the header
     include "header.inc";
