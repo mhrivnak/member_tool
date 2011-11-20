@@ -1,0 +1,40 @@
+body {
+  font-size:12px;
+  background-color: #ffffff;
+  padding: 1em;
+}
+
+/* T R B L */
+
+fieldset {
+  border:ridge 2px black;
+  margin: 0 0 1em 0;
+  padding: 1em;
+  border-radius:1em;
+}
+
+legend {
+  font-weight:bold;
+  border:none;
+  margin: 0 0 0 0;
+}
+
+label {
+  float:left;
+  width:40%;
+  text-align:right;
+  padding: 0 0 0 0;
+  margin:0 1em 0 0;
+  clear:both
+}
+
+input {
+  float:left;
+  width:45%;
+  font-size:12px;
+  border:ridge 0.25em gray;
+  padding: 0.1em 0 0.1em 1em;
+  margin:0 0 1em 0;
+  border-radius:0.5em;
+}
+
