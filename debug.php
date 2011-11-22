@@ -12,6 +12,8 @@ function debug( $msg='' ) {
 
     global $debug;
     switch ($debug) {
+        case 0:
+            break;
         case 1:
             echo "<!-- $msg -->\n";
             break;

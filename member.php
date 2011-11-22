@@ -6,39 +6,31 @@
 # Licensed under The MIT License
 # http://www.opensource.org/licenses/mit-license.php
 
-require 'debug.php';
+require_once 'debug.php';
+require_once 'database_accessor.php';
 
-class Member {
+class Member extends DatabaseAccessor {
 
-  public $id;
-  public $firstName;
-  public $lastName;
+  protected static $table = 'members';
+  protected static $primary_key = 'member_id';
+  protected static $unique_keys = array( 'member_id', 'email' );
+  protected static $save_cols = array( 'name', 'join_date', 'email', 'type', 'occupation','employer', 'birth_year', 'address', 'city', 'country', 'state', 'zip', 'phone', 'approver' ); 
+
+  public $name;
+  public $join_date;
   public $email;
-
-  function _map_result( $result ) {
-     $this->id = $result['member_id'];
-     $this->firstName = $result['first_name'];
-     $this->lastName = $result['last_name'];
-     $this->email = $result['email'];
-  }
-
-  public function get_by( $key, $val ) {
-    $valid_keys = array( 'member_id', 'email' );
-    if( in_array($key, $valid_keys) ) {
-      $new = new Member;
-      $sql = "SELECT * FROM member_list WHERE $key = '" . mysql_real_escape_string($val) . "'";
-      debug("SQL: $sql");
-      $result = mysql_fetch_assoc(mysql_query($sql));
-      $new->_map_result( $result );
-      return $new;
-    } else {
-      debug("Bad key: $key");
-    }
-  }
-
-  public function get_by_id( $id ) {
-    return self::get_by( 'member_id', $id );
-  }
+  public $type;
+  public $occupation;
+  public $employer;
+  public $birth_year;
+  public $address;
+  public $city;
+  public $country;
+  public $state;
+  public $zip;
+  public $phone;
+  public $approver;
+  public $updated;
 
 }
 
