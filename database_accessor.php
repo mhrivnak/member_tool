@@ -3,8 +3,7 @@
 # database_accessor.php
 
 # Copyright (c) 2011 Jeff Schornick <code@schornick.org>
-# Licensed under The MIT License
-# http://www.opensource.org/licenses/mit-license.php
+# License: GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 
 require_once 'debug.php';
 

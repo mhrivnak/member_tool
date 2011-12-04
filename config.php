@@ -3,7 +3,7 @@
 # config.php -- global configuration and settings
 
 # Copyright (c) 2011 Jeff Schornick <code@schornick.org>
-# License: MIT License, http://www.opensource.org/licenses/mit-license.php
+# License: GNU GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 
 include('lib/spyc.php');
 
