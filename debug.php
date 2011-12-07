@@ -21,7 +21,7 @@ function debug( $msg='' ) {
             break;
         case 3:
         default:
-            echo "$msg\n";
+            echo "DEBUG: $msg\n";
             break;
             
     }

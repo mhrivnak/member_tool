@@ -17,7 +17,11 @@ class DatabaseAccessor {
   protected static $save_cols = array();
 
   # map an array to a list of values suitable for SQL, with optional quotes
-  private function sql_list( $array, $quote = false) {
+  private function sql_list( $array, $quote = false, $sanitize = false) {
+    # escape list
+    if($sanitize) {
+      $array = array_map('mysql_real_escape_string', $array);
+    }
     # create a function which quotes a string using $quote
     if($quote) {
       $quoter = create_function('$str', 'return "\'$str\'";');
@@ -29,7 +33,7 @@ class DatabaseAccessor {
   private function sql_pairs( $array ) {
     $pairs = array();
     foreach( $array as $varname ) {
-      array_push( $pairs, "$varname = '" . $this->{$varname} . "'" );
+      array_push( $pairs, "$varname = '" . mysql_real_escape_string($this->{$varname}) . "'" );
     }
     return implode(',', $pairs);
   }
@@ -56,7 +60,7 @@ class DatabaseAccessor {
   }
 
   public function check() {
-     
+    return true; 
   }
 
   # NB: This uses late static binding, which requires PHP 5.3+
@@ -82,10 +86,16 @@ class DatabaseAccessor {
   }
 
   public function save() {
+
+    if( !$this->check() ) {
+      debug("save: check failed");
+      return false;
+   }
+
     if( !$this->id ) {
       $sql = 'INSERT into ' . static::$table;
       $sql .= '(' . $this->sql_list(static::$save_cols) . ")";
-      $sql .= " VALUES (" . $this->sql_list($this->names_to_vals(static::$save_cols), true) . ")";
+      $sql .= " VALUES (" . $this->sql_list($this->names_to_vals(static::$save_cols), true, true) . ")";
       debug("SQL: $sql");
       $result = mysql_query($sql);
       if(!$result) {

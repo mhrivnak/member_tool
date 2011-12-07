@@ -1,5 +1,6 @@
 #!/bin/sh
 
+export ENV=test
 DIR=`dirname $0`
 
 $DIR/reload_tables.sh

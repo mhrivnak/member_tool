@@ -26,12 +26,13 @@ CREATE TABLE `requests` (
   `state` char(2) NULL DEFAULT 'NC',
   `zip` varchar(10) NULL,
   `phone` varchar(15) NOT NULL,
+  `account` boolean NOT NULL,
   `user` varchar(16) NULL,
   `user_alt` varchar(16) NULL,
   `status` enum ('new', 'done', 'rejected') NOT NULL,
   PRIMARY KEY (`request_id`),
   UNIQUE (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

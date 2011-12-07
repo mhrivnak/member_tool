@@ -1,11 +1,7 @@
 <?php
 
-set_include_path('..');
-require "config.php";
-require "member.php";
-require "database.php";
-
-$debug = 0;
+require('test.php');
+require('member.php');
 
 function test_save() {
 
@@ -25,7 +21,7 @@ function test_save() {
 
   if( !$id ) {
     $m->debug();
-    echo "FAIL: save didn't return a valid id\n";
+    fail("save didn't return a valid id: $id");
     return false;
   }
 
@@ -33,18 +29,17 @@ function test_save() {
 
   if( $n->name != $name ) {
     $n->debug();
-    echo "FAIL: saved attribute not retrieved\n";
+    fail("saved attribute not retrieved");
     return false;
   }
 
-  echo "Success!\n";
   return true;
 
 }
 
-$conf = load_config(dirname(__FILE__).'/../config.yaml', 'test');
-$db = db_connect($conf);
+test_init();
 
 test_save();
+echo "Success!\n";
 
 ?>
